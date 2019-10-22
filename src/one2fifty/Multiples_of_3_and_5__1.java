@@ -17,17 +17,16 @@ public class Multiples_of_3_and_5__1 {
 		int result=0;
 		
 		for(int i=1;i<1000;i++) {
-			if(i%3==0 || i%5==0) {
+			if(i%3==0 || i%5==0) 
 				multiples.add(i);
-			}
+			
 		}
 		
-		for(int i=0; i<multiples.size(); i++) {
+		for(int i=0; i<multiples.size(); i++)
 			result+=multiples.get(i);
-		}
+		
 		
 		System.out.println(result);
-
 	}
 
 }
