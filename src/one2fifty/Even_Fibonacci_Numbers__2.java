@@ -39,10 +39,6 @@ public class Even_Fibonacci_Numbers__2 {
 		
 		System.out.println(sum);
 		
-		
-		
-		
-
 	}
 
 }
