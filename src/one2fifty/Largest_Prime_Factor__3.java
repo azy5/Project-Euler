@@ -12,8 +12,10 @@ public class Largest_Prime_Factor__3 {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		List<Integer> prime = new ArrayList<Integer>();
-		prime.add(2);
-		int result = LPrime(2,12,prime);
+//		prime.add(2);
+		int quest = 12;
+//		Reduce(quest, prime.get(prime.size()-1));
+		int result = LPrime(1,quest,prime);
 		System.out.println(result);
 	}
 	
@@ -22,38 +24,44 @@ public class Largest_Prime_Factor__3 {
 		int key = 0;
 		while(key == 0) {
 			factor +=1;
+			System.out.println("testing number: " + factor);
+			if(factor == 2) {
+				primes.add(factor);
+				break;
+			}
 			for (int p : primes){
 				if(factor%p != 0) {
 					primes.add(factor);
 					key = 1;
 					break;
 				}
-			}
-			
+			}	
 		}
 		
-		//need to reduce target to a factor 12/2/2 = 3;
-		target = ReduceFact(target, primes);
+		System.out.println("New factor found is: " + factor);
 		
-		if(factor == target) {
-			return factor;
-		}else {
-			LPrime(factor, target, primes);
-		}
+		// reduce to factor
+		target = Reduce(target, primes.get((primes.size())-1));
+		
+//		if(target == 1) {
+//			return factor;
+//		}else {
+//			LPrime(factor, target, primes);
+//		}
 		return 0;
 	}
 	
-	public static long ReduceFact(long obj, List<Integer> primeList) {
-		for(int i=0; i<primeList.size()-2; i++) {
-			int p = primeList.get(i);
-			if(obj%p == 0) {
-				obj = obj%p;
-				ReduceFact(obj, primeList);
-			}
+	
+	//recursion needs to revert
+	public static long Reduce(long obj, int divider) {
+		if(obj%divider == 0) {
+			obj = obj/divider;
+			Reduce(obj, divider);
+		}else {
+			return obj;
 		}
-		
+		System.out.println("target reduced to: " + obj);
 		return obj;
-		
 	}
 
 }
